@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+let num1 = 0;
+let num2 = 0;
+
+function showMenu() {
+    console.log('Меню калькулятора');
+    console.log('1.введите два числа');
+    console.log('2.выполнить сложение');
+    console.log('3.выполнить вычетание');
+    console.log('4.выполнить деление');
+    console.log('5.возвести число в степень');
+    console.log('0.Выход');
+    rl.question('выберите пункт: ', handleInput);
+}
+
+function handleInput(choice) {
+    switch (choice) {
+        case '1':
+            rl.question('введите первое число: ', (first)=>{
+                num1 = parseFloat(first);
+                rl.question('введите второе число: ', (second)=>{
+                    num2 = parseFloat(second);
+                    console.log(`Числа: ${num1} и ${num2}`);
+                    showMenu();
+                });
+            });
+            break;
+        case '2':
+            console.log(`Результат: ${num1 + num2}`);
+            showMenu();
+            break;
+        case '0':
+            rl.close();
+            break;
+        default:
+            console.log('Неверный выбор');
+            showMenu();
+    }
+}
+
+showMenu();
+
+    </script>
+</body>
+</html>
